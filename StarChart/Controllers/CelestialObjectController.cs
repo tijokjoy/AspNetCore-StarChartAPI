@@ -33,11 +33,11 @@ namespace StarChart.Controllers
         }
 
         [HttpGet("{name}")]
-        public IActionResult GetByName(string Name) {
+        public IActionResult GetByName(string name) {
 
-            var celestrailObjects = _context.CelestialObjects.Where(x=> x.Name == Name).ToList();
+            var celestrailObjects = _context.CelestialObjects.Where(x=> x.Name == name).ToList();
 
-            if (celestrailObjects ==null)    return NotFound();
+            if (!celestrailObjects.Any())    return NotFound();
 
             foreach (var item in celestrailObjects)
             {
